@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const cors = require('cors');
@@ -8,6 +9,7 @@ const textToSpeech = require('@google-cloud/text-to-speech');
 const recorder = require('node-record-lpcm16');
 const app = express();
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
 
 const upload = multer({ dest: 'uploads/' });
 const { getGeminiAnswer } = require('./gemini-pro-vision.js');
@@ -80,8 +82,8 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
         console.error("Error during file processing:", error);
         res.status(500).send({ error: 'Failed to process the image or text-to-speech conversion' });
     } finally {
-        recognizeStream.end(); // Properly end the recognize stream
-        recording.unpipe(recognizeStream); // Disconnect the recording stream
+        recognizeStream.end();
+        recording.unpipe(recognizeStream);
         recording.end(); // Properly end the recording stream
         fs.unlinkSync(filePath); // Clean up the file
     }
