@@ -35,7 +35,7 @@ function WebcamImage() {
       }
 
       const data = await response.json();
-      setBackendData({ answer: data.answer, audioUrl: `http://localhost:5000/${data.audioFile}` });
+      setBackendData({ answer: data.answer, audioUrl: `http://localhost:5000/${backendData.audioUrl}` });
       setShowCamera(false); // Hide camera when displaying answers for idea or question prompts
       clearIntervalIfActive(); // Stop interval
     } catch (error) {
@@ -55,11 +55,12 @@ function WebcamImage() {
 
   useEffect(() => {
     if (backendData.audioUrl && audioRef.current) {
-      audioRef.current.src = backendData.audioUrl;
-      audioRef.current.load();
-      audioRef.current.play().catch(error => console.error('Error playing audio:', error));
+      audioRef.current.src = backendData.audioUrl;  // Ensure this URL is correct
+      audioRef.current.load();  // Load the audio file
+      audioRef.current.play().catch(error => console.error('Error playing audio:', error));  // Play the audio
     }
-  }, [backendData.audioUrl]);
+  }, [backendData.audioUrl]); // Dependency on audioUrl ensures the effect runs when it changes
+  
 
   const startInterval = () => {
     clearIntervalIfActive();
@@ -108,9 +109,10 @@ function WebcamImage() {
         </button>
       </div>
       {backendData.audioUrl && (
-        <audio ref={audioRef} controls src={backendData.audioUrl} type="audio/mp3">
-          Your browser does not support the audio element.
-        </audio>
+      <audio ref={audioRef} controls autoPlay>
+        <source src={backendData.audioUrl} type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
       )}
     </div>
   );
