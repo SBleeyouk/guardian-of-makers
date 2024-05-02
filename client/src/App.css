@@ -1,13 +1,32 @@
+@font-face {
+    font-family: 'GoogleSans';
+    src: url('client/src/fonts/GoogleSans-Regular.ttf') format('woff2');
+    font-weight: regular;
+    font-style: normal;
+}
+
 .Container {
+    font-family: 'GoogleSans', sans-serif;
+    transition: opacity 0.4s;
     align-items: center; /* Ensures horizontal alignment is centered */
     min-height: 100vh; /* Takes at least the full height of the viewport */
-    margin: 0 auto; /* Centering horizontally within any parent */
+    margin: 0px ; /* Centering horizontally within any parent */
     display: flex;
     flex-direction: column; /* Stack children vertically */
     justify-content: center; /* Ensures vertical alignment is centered */
 }
 
+.cam-buttons {
+    width: 100%;
+}
+
+.text-buttons {
+    display: none;
+    width: 100%;
+}
+
 button {
+    flex: 50%;
     margin-top: 10px;
     padding: 10px 40px;
     border: none;
@@ -20,13 +39,31 @@ button {
     margin-right: auto;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+} /* <span class="material-symbols-outlined">
+photo_camera </span> */
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+/*<span class="material-symbols-outlined">
+perm_camera_mic</span>*/
+
+
 img {
-    width: 300px;
+    margin: 12px;
     object-fit: cover;
-    height: 120px;
+    aspect-ratio: 1 / 1;
     display: block; /* Ensure the image behaves like a block element */
-    margin-left: auto; /* Center the image horizontally */
-    margin-right: auto; /* Center the image horizontally */
 }
 
 .App {
