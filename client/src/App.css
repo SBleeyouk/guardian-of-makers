@@ -1,0 +1,39 @@
+.Container {
+    align-items: center; /* Ensures horizontal alignment is centered */
+    min-height: 100vh; /* Takes at least the full height of the viewport */
+    margin: 0 auto; /* Centering horizontally within any parent */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Ensures vertical alignment is centered */
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 40px;
+    border: none;
+    background-color: rgb(6, 191, 233);
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    display: block; /* Make button block to apply margin auto for centering */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    width: 300px;
+    object-fit: cover;
+    height: 120px;
+    display: block; /* Ensure the image behaves like a block element */
+    margin-left: auto; /* Center the image horizontally */
+    margin-right: auto; /* Center the image horizontally */
+}
+
+.App {
+    display: flex;
+    align-items: center; /* Ensures all content is aligned centrally on the cross-axis */
+    width: 100vw; /* Adjust width to 100% of the viewport width */
+    justify-content: center; /* Ensures all content is justified centrally on the main axis */
+    background-color: #262b36; /* Background color */
+    min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
+}
