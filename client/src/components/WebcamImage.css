@@ -1,0 +1,17 @@
+.webcam-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Takes full height of the viewport */
+  }
+  
+.webcam {
+    width: 30vw; /* Full width of the viewport */
+    height: 70vh; /* 70% of the viewport height */
+}
+  
+button {
+    margin-top: 20px;
+}
+  

@@ -12,7 +12,6 @@ function WebcamImage() {
   const intervalRef = useRef(null);
 
   const uploadImage = async (promptType) => {
-    setShowCamera(true); // Ensure the camera is shown when uploading new image
     const imageSrc = webcamRef.current.getScreenshot();
     if (!imageSrc) {
       console.error('Failed to capture image');
@@ -35,8 +34,8 @@ function WebcamImage() {
       }
 
       const data = await response.json();
-      setBackendData({ answer: data.answer, audioUrl: `http://localhost:5000/${backendData.audioUrl}` });
-      setShowCamera(false); // Hide camera when displaying answers for idea or question prompts
+      setBackendData({ answer: data.answer, audioUrl: `http://localhost:5000/${data.audioFile}` });
+      setShowCamera(false); // Hide camera and controls
       clearIntervalIfActive(); // Stop interval
     } catch (error) {
       console.error('Error uploading image:', error);
@@ -44,23 +43,22 @@ function WebcamImage() {
   };
 
   useEffect(() => {
-    if (isToggled) {
+    if (isToggled && showCamera) {
       startInterval();
     } else {
       clearIntervalIfActive();
     }
 
     return () => clearIntervalIfActive();
-  }, [isToggled]);
+  }, [isToggled, showCamera]);
 
   useEffect(() => {
     if (backendData.audioUrl && audioRef.current) {
-      audioRef.current.src = backendData.audioUrl;  // Ensure this URL is correct
-      audioRef.current.load();  // Load the audio file
-      audioRef.current.play().catch(error => console.error('Error playing audio:', error));  // Play the audio
+      audioRef.current.src = backendData.audioUrl;
+      audioRef.current.load();
+      audioRef.current.play().catch(error => console.error('Error playing audio:', error));
     }
-  }, [backendData.audioUrl]); // Dependency on audioUrl ensures the effect runs when it changes
-  
+  }, [backendData.audioUrl]);
 
   const startInterval = () => {
     clearIntervalIfActive();
@@ -75,7 +73,7 @@ function WebcamImage() {
   };
 
   const handleClose = () => {
-    setShowCamera(true); // Re-enable camera
+    setShowCamera(true); // Re-enable camera and controls
     setBackendData({ answer: null, audioUrl: null }); // Clear previous answers
     if (isToggled) {
       startInterval(); // Restart interval if toggle was on
@@ -83,37 +81,48 @@ function WebcamImage() {
   };
 
   return (
-    <div className="container">
-      {showCamera ? (
-        <Webcam ref={webcamRef} audio={false} screenshotFormat="image/jpeg" />
-      ) : (
-        <div className="answer">
-          <h2>Answer:</h2>
-          <p>{backendData.answer}</p>
-          <button onClick={handleClose}>Close</button>
-        </div>
-      )}
-      <div className="cam-buttons">
-        <h3>Safety Check</h3>
-        <ToggleSwitch isToggled={isToggled} onToggle={() => setIsToggled(!isToggled)} />
-        <h3>For Your Curiosity</h3>
-        <button disabled={!showCamera} onClick={() => uploadImage('idea')}>
-            <span className="material-symbols-outlined">
-            photo_camera</span>
-            Ideation Prompt
-        </button>
-        <button disabled={!showCamera} onClick={() => uploadImage('question')}>
-          <span className="material-symbols-outlined">
-            perm_camera_mic</span>
-            Question Prompt
-        </button>
+    <div className="parent">
+      <div className="container">
+        {showCamera ? (
+          <Webcam
+            ref={webcamRef}
+            audio={false}
+            videoConstraints={{
+              width: 500,
+              height: 700,
+              facingMode: "user",
+              aspectRatio: 3
+            }}
+            screenshotFormat="image/jpeg"
+          />
+        ) : (
+          <div className="answer">
+            <h2>Answer:</h2>
+            <p>{backendData.answer}</p>
+            <button onClick={handleClose}>Close</button>
+          </div>
+        )}
+        {showCamera && (
+          <div className="cam-buttons">
+            <div className="btn-safe">
+              <h3>Safety</h3>
+              <ToggleSwitch isToggled={isToggled} onToggle={() => setIsToggled(!isToggled)} />
+            </div>
+            <div className="btn">
+                <button className = "iconbtn" onClick={() => uploadImage('idea')}>
+                  <span className="material-symbols-outlined">
+                    photo_camera</span>
+                  Ideation Prompt
+                </button>
+                <button className = "iconbtn" onClick={() => uploadImage('question')}>
+                  <span className="material-symbols-outlined">
+                    perm_camera_mic</span>
+                  Question Prompt
+                </button>
+            </div>
+          </div>
+        )}
       </div>
-      {backendData.audioUrl && (
-      <audio ref={audioRef} controls autoPlay>
-        <source src={backendData.audioUrl} type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
-      )}
     </div>
   );
 }

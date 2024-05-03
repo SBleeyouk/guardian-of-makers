@@ -5,8 +5,16 @@
     font-style: normal;
 }
 
-.Container {
-    background: #000000;
+.parent {
+    display: flex;
+    justify-content: center; /* Aligns horizontally */
+    align-items: center; /* Aligns vertically */
+    height: 100vh; /* Full height of the viewport */
+  }
+
+.container {
+    width: 40vw;
+    background: #faf8ff;
     font-family: 'GoogleSans', sans-serif;
     transition: opacity 0.4s;
     align-items: center; /* Ensures horizontal alignment is centered */
@@ -16,12 +24,46 @@
     flex-direction: column; /* Stack children vertically */
     justify-content: center; /* Ensures vertical alignment is centered */
     color: #EEEEEE;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    color: #011947;
 
 }
 
 .cam-buttons {
     display: flex;
-    width: 100%;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.btn-safe{
+    flex: 20%;
+    margin-right: 2vh;
+    margin-left: 2vh;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn{
+    flex: 80%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.iconbtn{
+    margin: 2vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 .text-buttons {
@@ -34,8 +76,8 @@ button {
     flex: 50%;
     padding: 24px;
     border: none;
-    background-color: rgb(0, 104, 226);
-    color: #EEEEEE;
+    background-color: #d9e2fe;
+    color: #011947;
     border-radius: 24px;
     cursor: pointer;
     display: block; /* Make button block to apply margin auto for centering */
@@ -62,6 +104,10 @@ photo_camera </span> */
 /*<span class="material-symbols-outlined">
 perm_camera_mic</span>*/
 
+.iconbtn{
+    display: flex;
+    text-align: center;
+}
 
 img {
     margin: 12px;
@@ -70,11 +116,21 @@ img {
     display: block; /* Ensure the image behaves like a block element */
 }
 
-.App {
+.WebcamImage {
     display: flex;
     align-items: center; /* Ensures all content is aligned centrally on the cross-axis */
     width: 100vw; /* Adjust width to 100% of the viewport width */
     justify-content: center; /* Ensures all content is justified centrally on the main axis */
     background-color: #262b36; /* Background color */
     min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
+}
+
+.answer{
+    margin: 5vh;
+    padding: 5vh;
+    height: 80vh;
+    width: 70%;
+    background-color: #f4d1f4;
+    overflow-y: scroll;
+    border-radius: 10px;
 }
