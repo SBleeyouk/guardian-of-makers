@@ -97,8 +97,8 @@ function WebcamImage() {
           />
         ) : (
           <div className="answer">
-            <h2>Answer:</h2>
-            <p>{backendData.answer}</p>
+            <h2 className="title">Answer:</h2>
+            <p className = "answer-text">{backendData.answer}</p>
             <button onClick={handleClose}>Close</button>
           </div>
         )}

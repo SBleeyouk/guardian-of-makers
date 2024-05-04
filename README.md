@@ -14,11 +14,12 @@ _"What interesting project can I undertake with the components I have?"_
 _"How should I wire this compoenent with my arduino?"_
 ## 3. Setup
 1. install node.js and npm
-2. `git clone https://github.com/SBleeyouk/GARAGEer.git <folder directory here>`
-3. Create .env file, fill in the API key
-`API_KEY = <Google AI studio에서 발급받은 key 입력>`
+2. `git clone https://github.com/SBleeyouk/guardian-of-makers.git <folder directory here>`
+3. Create .env file, fill in the Google Studio Gemini API key
+`API_KEY = <Your Google API KEY>`
 4. on vs code terminal:
-`node gemini-pro-vision.js `
+`yarn install`
+`npm run start`
 ## 4. References
 1. 
 ## 5. Memo / Trial & Error

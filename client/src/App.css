@@ -134,3 +134,8 @@ img {
     overflow-y: scroll;
     border-radius: 10px;
 }
+
+.answer-text{
+    font-size: 20px;
+    line-height: 130%;
+}
