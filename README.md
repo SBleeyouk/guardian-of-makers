@@ -1,6 +1,6 @@
 # Guardian of Makers
 ## 1. Brief
-[Hero Gif]
+![](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/3ca70686-a9d7-4323-bda0-900fcd733f76.gif?ClientID=sulu&Date=1715087989&Signature=417caba83967ce5499c09e091b1c7ede3ccba02b)
 - Guardian of Makers (GoM) is a **Safe AI Guidance for young makers to learn to fail and experiment more.**
 - Multi-modal AI running on WebApp, powered by Google Gemini
 - Keywords: Multi-modal AI, Failing Forward, Safety, Tele-supervision, Affective AI
