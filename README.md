@@ -49,19 +49,16 @@ _"How should I wire this compoenent with my arduino?"_
 
 ## 5. Future Works: What's Next?
 1. Keep on revising the prompt with Maker Ed professionals to improve prompt 
-2. Deliver features
-3. 
-
+2. Deliver more features
 ## References
-1. Riskowski et al., 2009
-2. Barron & Darling-Hammond, 2008
-3. Dougherty, 2013
-4. Google Gemini API Document
-5. 
+1. Riskowski, J.L., Todd, C.D., Wee, B., Dark, M., & Harbor, J. (2009). "Exploring the effectiveness of an interdisciplinary water resources engineering module in an eighth grade science course" (PDF). International Journal of Engineering Education, 25(1), p.181.
+2. Barron, B. & Darling-Hammond, L. (2008). Teaching for Meaningful Learning: A Review of Research on Inquiry-Based and Cooperative Learning (PDF) Book Excerpt. George Lucas Educational Foundation.
+3. Dougherty, D. (2013). "The Maker Mindset." In M. Honey & D.E. Kanter (Eds.) (2013), Design, make, play: Growing the next generation of STEM innovators (pp.7-11). New York: Routledge.
+4. [Google Gemini API Document](https://ai.google.dev/gemini-api/docs)
 ## Memo / Trial & Error
 - 
 ---
-The project was submitted to Google AI Hackathon 2024. [View the project]() 
+The project was submitted to **Google AI Hackathon 2024** [View the project](https://devpost.com/software/guardian-of-makers?ref_content=user-portfolio&ref_feature=in_progress) 
 
 Saetbyeol Leeyouk (Sogang University) led AI and web development.
 Chanwoo Lee (Imperial College London) led Human-AI Interaction design. 
